@@ -1,0 +1,25 @@
+.button {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  background-color: #222;
+  padding: 10px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 32px;
+  width: 100px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button:hover,
+.button:focus {
+  text-decoration: none;
+}
+
+.disabled {
+  cursor: default;
+  background-color: #fff;
+  border-color: #222;
+  color: #222;
+}

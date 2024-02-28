@@ -1,0 +1,18 @@
+.main {
+    background-color: #222;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.data-key {
+    font-weight: 500;
+}
