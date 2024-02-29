@@ -15,7 +15,7 @@ export const Form = ({ handleSubmit, title }) =>  {
       setLoginInputWrong(true);
       return;
     }
-
+    
     if (e.target.value.includes('@')) {
       if (!isValidEmail(e.target.value)) {
         setLoginInputWrong(true);
@@ -27,7 +27,6 @@ export const Form = ({ handleSubmit, title }) =>  {
   }
 
   const  handleChange = (e) => {
-    console.log(e.target.value.length || !e.target.value)
     if (e.target.value.length < 8) {
       setInputWrong(true);
       return;
@@ -36,8 +35,28 @@ export const Form = ({ handleSubmit, title }) =>  {
     setInputWrong(false);
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!e.target[0].value) {
+      e.target[0].classList.add(styles.error);
+      return;
+    }
+
+    if (!e.target[1].value) {
+        e.target[1].classList.add(styles.error);
+        return;
+    }
+    
+    if (e.target[0].classList.contains(styles.error) ||
+        e.target[1].classList.contains(styles.error)) {
+        return;
+    }
+
+    handleSubmit(e);
+  }
   return  (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleFormSubmit}>
       
       <h1 className={styles.title}>{title}</h1>
 
@@ -59,5 +78,5 @@ export const Form = ({ handleSubmit, title }) =>  {
 
 
 function isValidEmail(value) {
-  return /^[A-Z0-9]+@[A-Z0-9]+.[A-Z]{2,4}$/i.test(value);
+  return /^[A-Z0-9]+@[A-Z0-9]+[.]+[A-Z]{2,4}$/i.test(value);
 }

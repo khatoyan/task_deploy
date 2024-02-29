@@ -8,22 +8,7 @@ export const RegPage = () => {
   const [data, setData] = useState([]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!e.target[0].value) {
-        e.target[0].classList.add('error');
-        return;
-    }
-
-    if (!e.target[1].value) {
-        e.target[1].classList.add('error');
-        return;
-    }
-    
-    if (e.target[0].classList.contains('error') ||
-        e.target[1].classList.contains('error')) {
-        return;
-    }
+    e.preventDefault()
 
     const formData =  Object.fromEntries(new FormData(e.target));
     setData([...data, formData]);
@@ -39,7 +24,7 @@ export const RegPage = () => {
       <div className="data">
         <h2>Список пользователей</h2>
         {data.length !== 0 && data.map((elem, index) => 
-           (<p>Пользователь <span className="data-key">#{index+1}</span><br/>
+           (<p>Пользователь <span className="data-key">№{index+1}</span><br/>
                Логин: <span className="data-key">{elem.login}</span><br/>
                Пароль: <span className="data-key">{elem.pass}</span>
            </p>)
